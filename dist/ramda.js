@@ -6379,10 +6379,10 @@ var memoizeWith = _curry2(function memoizeWith(mFn, fn) {
  * @see R.mergeRight, R.mergeDeepRight, R.mergeWith, R.mergeWithKey
  * @deprecated
  * @example
- *     
+ *      合并两个对象
  *      R.merge({ 'name': 'fred', 'age': 10 }, { 'age': 40 });
  *      //=> { 'name': 'fred', 'age': 40 }
- *
+ *      柯里化，预存部分参数。
  *      const withDefaults = R.merge({x: 0, y: 0});
  *      withDefaults({y: 2}); //=> {x: 0, y: 2}
  * @symb R.merge(a, b) = {...a, ...b}
@@ -6404,12 +6404,13 @@ var merge = _curry2(function merge(l, r) {
  * @return {Object} A merged object.
  * @see R.reduce
  * @example
- *
+ *      对数组项的对象进行merge。
  *      R.mergeAll([{foo:1},{bar:2},{baz:3}]); //=> {foo:1,bar:2,baz:3}
  *      R.mergeAll([{foo:1},{foo:2},{bar:2}]); //=> {foo:2,bar:2}
  * @symb R.mergeAll([{ x: 1 }, { y: 2 }, { z: 3 }]) = { x: 1, y: 2, z: 3 }
  */
 var mergeAll = _curry1(function mergeAll(list) {
+  // 用了一个apply方法以确保所有的数组被当做单个的对象依次传入_objectAssign$1方法。
   return _objectAssign$1.apply(null, [{}].concat(list));
 });
 
@@ -9310,6 +9311,7 @@ var thunkify = _curry1(function thunkify(fn) {
   });
 });
 
+// 导出
 exports.F = F;
 exports.T = T;
 exports.__ = __;
