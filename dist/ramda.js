@@ -275,6 +275,7 @@ var curryN = _curry2(function curryN(length, fn) {
   if (length === 1) {
     return _curry1(fn);
   }
+  // 利用递归对函数进行柯里化
   return _arity(length, _curryN(length, [], fn));
 });
 
@@ -6378,7 +6379,7 @@ var memoizeWith = _curry2(function memoizeWith(mFn, fn) {
  * @see R.mergeRight, R.mergeDeepRight, R.mergeWith, R.mergeWithKey
  * @deprecated
  * @example
- *
+ *     
  *      R.merge({ 'name': 'fred', 'age': 10 }, { 'age': 40 });
  *      //=> { 'name': 'fred', 'age': 40 }
  *
@@ -6386,6 +6387,7 @@ var memoizeWith = _curry2(function memoizeWith(mFn, fn) {
  *      withDefaults({y: 2}); //=> {x: 0, y: 2}
  * @symb R.merge(a, b) = {...a, ...b}
  */
+
 var merge = _curry2(function merge(l, r) {
   return _objectAssign$1({}, l, r);
 });
