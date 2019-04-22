@@ -1943,6 +1943,7 @@ function _cloneRegExp(pattern) {
 var type = _curry1(function type(val) {
   return val === null      ? 'Null'      :
          val === undefined ? 'Undefined' :
+         // 利用Object.prototype.toString方法返回值是"[object Array]"这种形式来对数据格式进行判断。  
          Object.prototype.toString.call(val).slice(8, -1);
 });
 
@@ -6182,7 +6183,7 @@ var mapObjIndexed = _curry2(function mapObjIndexed(fn, obj) {
  * @return {Array} The list of matches or empty array.
  * @see R.test
  * @example
- *
+ *      匹配正则对应的字符串，数组形式
  *      R.match(/([a-z]a)/g, 'bananas'); //=> ['ba', 'na', 'na']
  *      R.match(/a/, 'b'); //=> []
  *      R.match(/a/, null); //=> TypeError: null does not have a method named "match"
